@@ -42,4 +42,9 @@ public class EquipeServiceTestImpl implements EquipeService {
 
         return newEquipe;
     }
+
+    @Override
+    public boolean deleteEquipe(int noEquipe) {
+        return equipes.removeIf(equipe -> equipe.getNoEquipe() == noEquipe);
+    }
 }

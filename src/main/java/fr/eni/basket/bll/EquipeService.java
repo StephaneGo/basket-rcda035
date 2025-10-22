@@ -12,4 +12,6 @@ public interface EquipeService {
 
     Equipe addEquipe(EquipeDTO equipeDTO);
 
+    boolean deleteEquipe(int noEquipe);
+
 }
