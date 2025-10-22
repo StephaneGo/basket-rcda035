@@ -30,6 +30,7 @@ public class EquipeRestController {
     //Supprimer une équipe connaissant son numéro
     @DeleteMapping("/equipes/{noEquipe}")
     public ResponseEntity<Void> deleteEquipe(@PathVariable("noEquipe") int noEquipe) {
+        //truc
         boolean resultat = equipeService.deleteEquipe(noEquipe);
         if (!resultat) {
             return ResponseEntity.badRequest().build();
