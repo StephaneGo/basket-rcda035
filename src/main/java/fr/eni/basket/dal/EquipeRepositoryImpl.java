@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class EquipeRepositoryImpl implements EquipeRepository {
@@ -35,5 +36,16 @@ public class EquipeRepositoryImpl implements EquipeRepository {
         List<Equipe> equipes = jdbcTemplate.query(sql, new EquipeRowMapper());
 
         return equipes;
+    }
+
+    @Override
+    public Optional<Equipe> findEquipeByNom(String nomEquipe) {
+
+        String sql = "select noEquipe, nom  from equipes where nom = ? ";
+
+        //TODO : vérifier que ça fonctionne quand on ne trouve pas l'equipe
+        Equipe equipe = jdbcTemplate.queryForObject(sql, new EquipeRowMapper(), nomEquipe);
+
+        return Optional.ofNullable(equipe);
     }
 }
